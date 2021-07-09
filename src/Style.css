@@ -1,0 +1,16 @@
+.DiceGame {
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+.DiceButton {
+  background-color: #6a5acd;
+  padding: 10px;
+  font-size: large;
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+.DieImage {
+  padding: 15px;
+}

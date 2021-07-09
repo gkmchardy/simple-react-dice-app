@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Die from './Die.js'
+import './Style.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Dice extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            die0: 1,
+            die1: 6
+        }
+        this.handleRoll = this.handleRoll.bind(this)
+    }
+
+    handleRoll() {
+        let d0 = [this.state.die0]
+        let d1 = [this.state.die1]
+        d0 = Math.ceil(Math.random() * 6)
+        d1 = Math.ceil(Math.random() * 6)
+        this.setState(prevState => {
+            return {
+                die0: d0,
+                die1: d1
+            }
+        })
+    }
+
+    render() {
+        return (
+            <div className='DiceGame'>
+                <Die pips={this.state.die0} />
+                <Die pips={this.state.die1} />
+                <div>
+                    <button onClick={this.handleRoll} className='DiceButton'>Roll Dice</button>
+                </div>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default Dice
